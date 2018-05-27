@@ -1,0 +1,41 @@
+<md-toolbar class="md-whiteframe-5dp">
+    <div class="md-toolbar-tools">
+        <md-button id="menu-button"
+                   class="md-icon-button"
+                   aria-label="more_vert"
+                   ng-click="main.toggleLeft()">
+            <ng-md-icon icon="reorder"></ng-md-icon>
+        </md-button>
+        <h1> GitHub Users </h1>
+    </div>
+</md-toolbar>
+<md-content class="md-padding" layout="row" layout-wrap>
+    <div flex="25" ng-repeat="user in userListCtrl.users">
+        <md-card layout-wrap>
+            <md-card-title>
+                <md-card-title-media>
+                    <div class="md-media-md card-media">
+                        <img ng-src="{{user.avatar_url}}"
+                             ng-if="user.avatar_url">
+                        <img src="../../../../resources/default-avatar.png"
+                             ng-if="!user.avatar_url">
+                    </div>
+                </md-card-title-media>
+                <span flex></span>
+                <md-card-title-text>
+                    <span class="md-headline">{{ user.login }}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="column" layout-align="start left">
+                <md-button class="md-primary" ng-href="{{user.html_url}}"
+                           target="_blank">Go to github of {{ user.login }} </md-button>
+                <md-button class="md-primary" ng-click="userListCtrl.showRepositories(user.login)">
+                    show list repositories of {{ user.login }} </md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+    <div>
+        <md-button class="md-raised md-primary"
+                   ng-click="userListCtrl.nextPage()"> NextPage </md-button>
+    </div>
+</md-content>

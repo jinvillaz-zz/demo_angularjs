@@ -1,0 +1,41 @@
+<div layout="column" ng-cloak layout-fill>
+    <section layout="row" layout-fill>
+        <md-sidenav class="md-sidenav-left md-whiteframe-4dp"
+                    md-component-id="left">
+            <md-toolbar class="md-tall md-hue-2 md-whiteframe-5dp">
+                <span flex></span>
+                <div layout="column" class="md-toolbar-tools-bottom inset">
+                    <user-avatar></user-avatar>
+                    <span>Github</span>
+                </div>
+            </md-toolbar>
+            <md-content>
+                <md-list>
+                    <md-subheader class="md-no-sticky">Menu</md-subheader>
+                    <md-list-item id="menu-dashboard-item"
+                                  ng-click="main.changeRoute('users')">
+                        <ng-md-icon icon="home"></ng-md-icon>
+                        <p> Home</p>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+        <md-content flex>
+            <ui-view layout="column" layout-fill>
+                <md-toolbar class="md-theme-light md-whiteframe-5dp">
+                    <div class="md-toolbar-tools">
+                        <md-button id="menu-button"
+                                   class="md-icon-button"
+                                   aria-label="more_vert"
+                                   ng-click="main.toggleLeft()">
+                            <ng-md-icon icon="reorder"></ng-md-icon>
+                        </md-button>
+                        <a ui-sref="main" flex>
+                            <span>GitHub Users</span>
+                        </a>
+                    </div>
+                </md-toolbar>
+            </ui-view>
+        </md-content>
+    </section>
+</div>
