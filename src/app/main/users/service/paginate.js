@@ -24,7 +24,6 @@ export default class UserPaginate {
             page: this.$stateParams.page || 1,
             limit: 12
         };
-        console.info(this.pagination);
     }
 
     setPage(page) {
