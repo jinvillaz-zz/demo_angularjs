@@ -2,12 +2,12 @@ import './styles.scss';
 
 export default class MainController {
 
-    constructor($mdSidenav, $state, UserPaginate) {
+    constructor($mdSidenav, $state, UserStatus) {
         'ngInject';
         this.$mdSidenav = $mdSidenav;
         this.$state = $state;
-        this.UserPaginate = UserPaginate;
-        const page = this.UserPaginate.getPage();
+        this.UserStatus = UserStatus;
+        const page = this.UserStatus.getPage();
         this.$state.go('main.users.list', { page });
     }
 
@@ -25,7 +25,7 @@ export default class MainController {
     changeRoute(clickEvent) {
         switch (clickEvent) {
         case 'users': {
-            const page = this.UserPaginate.getPage();
+            const page = this.UserStatus.getPage();
             this.$state.go('main.users.list', { page });
             break;
         }

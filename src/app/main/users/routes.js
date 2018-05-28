@@ -19,10 +19,10 @@ export default function routerConfig($stateProvider) {
             }
         },
         resolve: {
-            users: ($stateParams, UserPaginate, ToastService) => {
+            users: ($stateParams, UserStatus, ToastService) => {
                 'ngInject';
-                UserPaginate.setPage($stateParams.page);
-                return UserPaginate.getData()
+                UserStatus.setPage($stateParams.page);
+                return UserStatus.getData()
                 .catch((err) => {
                     ToastService.show(err);
                 });
@@ -39,9 +39,9 @@ export default function routerConfig($stateProvider) {
             }
         },
         resolve: {
-            repositories: ($stateParams, ReposPaginate, ToastService) => {
+            repositories: ($stateParams, ReposStatus, ToastService) => {
                 'ngInject';
-                return ReposPaginate.nextPage($stateParams.user)
+                return ReposStatus.nextPage($stateParams.user)
                 .catch((err) => {
                     ToastService.show(err);
                 });

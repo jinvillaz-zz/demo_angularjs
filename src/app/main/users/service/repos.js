@@ -1,7 +1,7 @@
 /**
- * Defines User resource from REST API
+ * Defines Repositories by user resource from REST API
  */
-export default class UserApi {
+export default class ReposApi {
 
     /**
      * @param {Function} $resource function for rest api.
@@ -15,6 +15,10 @@ export default class UserApi {
             id: '@id'
         }, {
             query: {
+                isArray: true
+            },
+            repos: {
+                url: url + '/:id/repos',
                 isArray: true
             }
         });

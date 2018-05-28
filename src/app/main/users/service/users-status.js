@@ -1,7 +1,7 @@
 /**
  * Defines a handler for pagination.
  */
-export default class UserPaginate {
+export default class UserStatus {
 
     /**
      * @param {Object} $stateParams is a service to get params in url.

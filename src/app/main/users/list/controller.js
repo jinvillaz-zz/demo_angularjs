@@ -3,16 +3,16 @@
  */
 export default class UserListController {
 
-    constructor($state, users, UserPaginate) {
+    constructor($state, users, UserStatus) {
         'ngInject';
         this.$state = $state;
         this.users = users;
-        this.UserPaginate = UserPaginate;
+        this.UserStatus = UserStatus;
     }
 
     nextPage() {
-        this.UserPaginate.setNext();
-        const page = this.UserPaginate.getPage();
+        this.UserStatus.setNext();
+        const page = this.UserStatus.getPage();
         this.$state.go('main.users.list', { page });
     }
 

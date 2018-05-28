@@ -1,7 +1,7 @@
 /**
  * Defines a handler for pagination.
  */
-export default class ReposPaginate {
+export default class ReposStatus {
 
     /**
      * @param {Object} ToastService is a service for handle error.

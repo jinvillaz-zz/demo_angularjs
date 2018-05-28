@@ -2,8 +2,9 @@ import './styles.scss';
 
 import ListController from './list/controller';
 import User from './service/user';
-import UserPaginate from './service/paginate';
-import ReposPaginate from './service/repositories';
+import Repos from './service/repos';
+import UserStatus from './service/users-status';
+import ReposStatus from './service/repos-status';
 import routes from './routes';
 
 const module = angular.module('app.main.users', [
@@ -12,8 +13,9 @@ const module = angular.module('app.main.users', [
 
 module.controller('UserListController', ListController);
 module.service('User', User);
-module.service('UserPaginate', UserPaginate);
-module.service('ReposPaginate', ReposPaginate);
+module.service('Repos', Repos);
+module.service('UserStatus', UserStatus);
+module.service('ReposStatus', ReposStatus);
 module.config(routes);
 
 export default module;
