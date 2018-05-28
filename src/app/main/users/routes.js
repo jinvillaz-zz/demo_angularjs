@@ -30,9 +30,9 @@ export default function routerConfig($stateProvider) {
         }
     })
     .state('main.users.repositories', {
-        url: 'users/:user/repositories/page/:page',
+        url: 'users/:user/repositories/page/:pagerepo',
         views: {
-            'preview@main.users': {
+            'container@main.users': {
                 template: require('./repositories/index.html'),
                 controller: 'ReposListController',
                 controllerAs: 'reposListCtrl'
@@ -41,7 +41,9 @@ export default function routerConfig($stateProvider) {
         resolve: {
             repositories: ($stateParams, ReposStatus, ToastService) => {
                 'ngInject';
-                return ReposStatus.nextPage($stateParams.user)
+                ReposStatus.setUser($stateParams.user);
+                ReposStatus.setPage($stateParams.pagerepo);
+                return ReposStatus.getData()
                 .catch((err) => {
                     ToastService.show(err);
                 });

@@ -8,34 +8,41 @@
         </md-button>
         <h1> GitHub Users </h1>
     </div>
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex">Repositories of the user {{reposListCtrl.user}}</h2>
+    </div>
 </md-toolbar>
 <md-content class="md-padding" layout="row" layout-wrap>
-    <div flex="25" ng-repeat="repos in userListCtrl.repos">
-        <md-card layout-wrap>
-            <md-card-title>
-                <md-card-title-media>
-                    <div class="md-media-md card-media">
-                        <img ng-src="{{repos.avatar_url}}"
-                             ng-if="repos.avatar_url">
-                        <img src="../../../../resources/default-avatar.png"
-                             ng-if="!repos.avatar_url">
-                    </div>
-                </md-card-title-media>
-                <span flex></span>
-                <md-card-title-text>
-                    <span class="md-headline">{{ repos.login }}</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-actions layout="column" layout-align="start left">
-                <md-button class="md-primary" ng-href="{{repos.html_url}}"
-                           target="_blank">Go to github of {{ repos.login }} </md-button>
-                <md-button class="md-primary" ng-click="reposListCtrl.showRepositories(repos.login)">
-                    show list repositories of {{ repos.login }} </md-button>
-            </md-card-actions>
+    <div flex="25" ng-repeat="repo in reposListCtrl.repos">
+        <md-card style="height: 300px;">
+            <md-card-header>
+                <md-card-header-text>
+                    <span class="md-title">
+                        <md-button class="md-primary md-truncate" ng-href="{{repo.html_url}}"
+                                                      target="_blank">
+                            Go to repositorie
+                        </md-button>
+                    </span>
+                    <span class="md-headline">{{ repo.name }}</span>
+                </md-card-header-text>
+            </md-card-header>
+            <md-card-content class="card-repo">
+                <p ng-if="!repo.description">
+                    Description not available
+                </p>
+                <p ng-if="repo.description">
+                    {{ repo.description }}
+                </p>
+                <p>Issues: {{ repo.open_issues }}</p>
+                <p>Open Issues: {{ repo.open_issues }}</p>
+                <p>Forks: {{ repo.forks }}</p>
+            </md-card-content>
         </md-card>
     </div>
-    <div>
-        <md-button class="md-raised md-primary"
-                   ng-click="userListCtrl.nextPage()"> NextPage </md-button>
+    <div flex="20" layout="row">
+        <md-button class="md-raised md-primary" flex
+                   ng-click="reposListCtrl.previousPage()"> Previous page </md-button>
+        <md-button class="md-raised md-primary" flex
+                   ng-click="reposListCtrl.nextPage()"> Next page </md-button>
     </div>
 </md-content>

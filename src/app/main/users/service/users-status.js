@@ -38,6 +38,13 @@ export default class UserStatus {
         this.pagination.page += 1;
     }
 
+    setPrevious() {
+        this.pagination.page -= 1;
+        if (this.pagination.page < 1) {
+            this.pagination.page = 1;
+        }
+    }
+
     /**
      * Gets paginated data.
      * @return {Promise} a new promise.

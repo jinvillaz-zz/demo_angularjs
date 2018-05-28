@@ -7,8 +7,6 @@ export default class MainController {
         this.$mdSidenav = $mdSidenav;
         this.$state = $state;
         this.UserStatus = UserStatus;
-        const page = this.UserStatus.getPage();
-        this.$state.go('main.users.list', { page });
     }
 
     /**

@@ -5,12 +5,12 @@ export default class ReposStatus {
 
     /**
      * @param {Object} ToastService is a service for handle error.
-     * @param {Object} User is a service for request users.
+     * @param {Object} Repos is a service for request users.
      */
-    constructor(ToastService, User) {
+    constructor(ToastService, Repos) {
         'ngInject';
         this.ToastService = ToastService;
-        this.User = User;
+        this.Repos = Repos;
         this.initData();
     }
 
@@ -18,35 +18,54 @@ export default class ReposStatus {
      * Initializes data paginate.
      */
     initData() {
+        this.user = '';
         this.pagination = {
             page: 1,
-            limit: 12
+            limit: 8
         };
         this.repos = null;
+    }
+
+    setUser(user) {
+        this.user = user;
+    }
+
+    getUser() {
+        return this.user;
+    }
+
+    setPage(page) {
+        this.pagination.page = parseInt(page) || 1;
     }
 
     getPage() {
         return this.pagination.page;
     }
 
+    setNext() {
+        this.pagination.page += 1;
+    }
+
+    setPrevious() {
+        this.pagination.page -= 1;
+        if (this.pagination.page < 1) {
+            this.pagination.page = 1;
+        }
+    }
+
     /**
      * Gets paginated data.
-     * @param {String} user to get repositories.
      * @return {Promise} a new promise.
      */
-    nextPage(user) {
+    getData() {
         return new Promise((resolve) => {
-            console.info('user: ', user);
-            return this.User.repos({
-                user,
+            return this.Repos.query({
+                user: this.user,
                 page: this.pagination.page,
                 per_page: this.pagination.limit // eslint-disable-line camelcase
             })
             .$promise
             .then((data) => {
-                console.info('data: ', data);
-                this.pagination.page += 1;
-                this.repos = data;
                 resolve(data);
             })
             .catch((err) => {

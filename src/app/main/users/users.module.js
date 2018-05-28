@@ -1,6 +1,7 @@
 import './styles.scss';
 
 import ListController from './list/controller';
+import ReposListController from './repositories/controller';
 import User from './service/user';
 import Repos from './service/repos';
 import UserStatus from './service/users-status';
@@ -12,6 +13,7 @@ const module = angular.module('app.main.users', [
 ]);
 
 module.controller('UserListController', ListController);
+module.controller('ReposListController', ReposListController);
 module.service('User', User);
 module.service('Repos', Repos);
 module.service('UserStatus', UserStatus);

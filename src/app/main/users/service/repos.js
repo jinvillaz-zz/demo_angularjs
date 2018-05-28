@@ -11,14 +11,10 @@ export default class ReposApi {
         'ngInject';
         const url = `https://api.github.com/users`;
 
-        return $resource(url + '/:id', {
-            id: '@id'
+        return $resource(`${url}/:user/repos`, {
+            user: '@user'
         }, {
             query: {
-                isArray: true
-            },
-            repos: {
-                url: url + '/:id/repos',
                 isArray: true
             }
         });
