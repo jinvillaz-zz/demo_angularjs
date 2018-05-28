@@ -10,7 +10,7 @@ export default function routerConfig($stateProvider) {
         template: require('./index.html')
     })
     .state('main.users.list', {
-        url: 'users/:page',
+        url: 'users/page/:page',
         views: {
             'container@main.users': {
                 template: require('./list/index.html'),
@@ -19,17 +19,18 @@ export default function routerConfig($stateProvider) {
             }
         },
         resolve: {
-            users: (UserPaginate, ToastService) => {
+            users: ($stateParams, UserPaginate, ToastService) => {
                 'ngInject';
-                return UserPaginate.nextPage()
+                UserPaginate.setPage($stateParams.page);
+                return UserPaginate.getData()
                 .catch((err) => {
                     ToastService.show(err);
                 });
             }
         }
     })
-    .state('main.users.list.repositories', {
-        url: 'users/:user/repositories',
+    .state('main.users.repositories', {
+        url: 'users/:user/repositories/page/:page',
         views: {
             'preview@main.users': {
                 template: require('./repositories/index.html'),

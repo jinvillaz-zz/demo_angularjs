@@ -1,5 +1,5 @@
 /**
- * Controller for users management.
+ * Controller for list of users.
  */
 export default class UserListController {
 
@@ -8,16 +8,16 @@ export default class UserListController {
         this.$state = $state;
         this.users = users;
         this.UserPaginate = UserPaginate;
-        console.info('es', users);
     }
 
     nextPage() {
+        this.UserPaginate.setNext();
         const page = this.UserPaginate.getPage();
         this.$state.go('main.users.list', { page });
     }
 
     showRepositories(login) {
         console.info(login);
-        this.$state.go('main.users.list.repositories', { user: login });
+        this.$state.go('main.users.repositories', { user: login });
     }
 }

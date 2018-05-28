@@ -7,7 +7,6 @@ export default class MainController {
         this.$mdSidenav = $mdSidenav;
         this.$state = $state;
         this.UserPaginate = UserPaginate;
-        // this.$state.go('main.users.detail', { page: 1 });
     }
 
     /**
@@ -18,7 +17,6 @@ export default class MainController {
     }
 
     /**
-     *
      * Changes routes
      * @param {String} clickEvent event's name
      */
@@ -26,7 +24,7 @@ export default class MainController {
         switch (clickEvent) {
         case 'users': {
             const page = this.UserPaginate.getPage();
-            this.$state.go('main.users.detail', { page });
+            this.$state.go('main.users.list', { page });
             break;
         }
         default:
