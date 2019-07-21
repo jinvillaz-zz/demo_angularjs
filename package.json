@@ -1,4 +1,19 @@
 {
+  "name": "angularjs-app",
+  "author": {
+    "name": "Jhonatan Villanueva",
+    "email": "jinvillaz@gmail.com",
+    "url": "https://github.com/jinvillaz"
+  },
+  "version": "1.0",
+  "url": "https://github.com/jinvillaz/demo_angularjs",
+  "scripts": {
+    "build": "gulp",
+    "serve": "gulp serve",
+    "serve:dist": "gulp serve:dist",
+    "test": "gulp test",
+    "test:auto": "gulp test:auto"
+  },
   "dependencies": {
     "@uirouter/angularjs": "~1.0.7",
     "angular": "~1.6.6",
@@ -74,13 +89,6 @@
     "url-loader": "~1.0.1",
     "webpack": "~2.2.1",
     "webpack-fail-plugin": "~1.0.5"
-  },
-  "scripts": {
-    "build": "gulp",
-    "serve": "gulp serve",
-    "serve:dist": "gulp serve:dist",
-    "test": "gulp test",
-    "test:auto": "gulp test:auto"
   },
   "eslintConfig": {
     "globals": {
